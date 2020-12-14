@@ -1,8 +1,19 @@
 export interface Product {
-  firstName: string,
-  lastName: string,
-  location: {
-    city: string,
-    state: string
-  }
+  name: string,
+  description: string,
+  price: string,
+  img: string,
+  specification: Specification
 }
+
+interface Specification {
+  guarantee: number
+  color: string
+  screenDiagonal: number
+}
+
+export interface RootState {
+  products: Product[],
+  clientBasket: Product[]
+}
+

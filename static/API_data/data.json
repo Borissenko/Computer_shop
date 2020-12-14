@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Noutbook",
+    "description": "nice",
+    "price": 20000,
+    "img": "/API_data/imgs/nout1.jpeg",
+    "specification": {
+      "guarantee": 12,
+      "color": "red",
+      "screenDiagonal": 27
+    }
+  }
+]
