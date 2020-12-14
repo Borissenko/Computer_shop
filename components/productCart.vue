@@ -1,28 +1,38 @@
 <template>
   <div class="cart">
-    <div class="cart__img"
-         :style="{backgroundImage: `url(${product.img})`}"
-    ></div>
+    <div class="cart__img" :style="{backgroundImage: `url(${product.img})`}"></div>
     <div class="cart__name">{{product.name}}</div>
     <div class="cart__description">{{product.description}}</div>
-    <div class="cart__price">{{product.price}} <span>₽</span></div>
-    <div class="cart__btn">Купить</div>
+    <div class="cart__price">{{product.price | splitPrice}} <span>₽</span></div>
+    <div @click.stop="onPutProductToBasket(product.id)"  class="cart__btn">Купить</div>
   </div>
 </template>
 
-<script>
-import Vue from 'vue'
+<script lang="ts">
+import Vue, {PropType} from 'vue'
+import {mapMutations} from 'vuex'
+import {Product} from '~/types';
 
 export default Vue.extend({
   props: {
     product: {
-      type: Object,
+      type: Object as PropType<Product>,
       required: true
-    },
-    computed: {
-      img() {
-        return 5
-      }
+    }
+  },
+  filters: {
+    splitPrice: function (val: number): string {
+      let [a, b, c,...rest] = val.toString().split('').reverse()
+      return [rest.reverse().join(''), ' ', c, b, a].join('')
+    }
+  },
+  methods: {
+    ...mapMutations([
+      'PUT_PRODUCT_TO_BASKET'
+    ]),
+    onPutProductToBasket(id: number) {
+      this.PUT_PRODUCT_TO_BASKET(id)
+      this.$router.push('/Basket')
     }
   }
 
@@ -34,8 +44,8 @@ export default Vue.extend({
   width: rem(270);
   height: fit-content;
   box-sizing: border-box;
-  padding: rem(10);
-  border: $grey 1px solid;
+  padding: rem(20);
+  background: $white;
 
   &__img {
     width: 100%;
@@ -43,15 +53,30 @@ export default Vue.extend({
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    border: red 1px solid;
   }
 
   &__name, &__description {
-    margin-top: rem(5);
     color: $grey;
     font-size: rem(16);
+    line-height: rem(20);
 
   }
+  &__name{
+    margin-top: rem(20);
+  }
+
+  &__price {
+    @extend .price;
+    margin-top: rem(10);
+  }
+
+  &__btn {
+    width: 100%;
+    margin: 0 auto;
+    @extend .btn_common;
+    margin-top: rem(20);
+  }
+
 }
 
 

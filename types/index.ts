@@ -1,4 +1,5 @@
 export interface Product {
+  id: number,
   name: string,
   description: string,
   price: string,
@@ -8,12 +9,13 @@ export interface Product {
 
 interface Specification {
   guarantee: number
+  release: number
   color: string
   screenDiagonal: number
 }
 
 export interface RootState {
   products: Product[],
-  clientBasket: Product[]
+  clientBasket: number[]
 }
 

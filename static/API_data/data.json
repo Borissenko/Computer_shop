@@ -1,13 +1,158 @@
 [
   {
+    "id": 11,
     "name": "Noutbook",
     "description": "nice",
     "price": 20000,
     "img": "/API_data/imgs/nout1.jpeg",
     "specification": {
       "guarantee": 12,
-      "color": "red",
+      "release": 2005,
+      "color": "желтый",
       "screenDiagonal": 27
+    }
+  },
+  {
+    "id": 12,
+    "name": "Book",
+    "description": "fine",
+    "price": 33000,
+    "img": "/API_data/imgs/nout2.jpeg",
+    "specification": {
+      "guarantee": 24,
+      "release": 2090,
+      "color": "белый",
+      "screenDiagonal": 16
+    }
+  },
+  {
+    "id": 13,
+    "name": "Nout",
+    "description": "ugly",
+    "price": 16000,
+    "img": "/API_data/imgs/nout3.jpeg",
+    "specification": {
+      "guarantee": 16,
+      "release": 2095,
+      "color": "белый",
+      "screenDiagonal": 24
+    }
+  },
+  {
+    "id": 15,
+    "name": "Noutbook",
+    "description": "nice",
+    "price": 20000,
+    "img": "/API_data/imgs/nout1.jpeg",
+    "specification": {
+      "guarantee": 12,
+      "release": 2000,
+      "color": "желтый",
+      "screenDiagonal": 27
+    }
+  },
+  {
+    "id": 17,
+    "name": "Book",
+    "description": "fine",
+    "price": 33000,
+    "img": "/API_data/imgs/nout2.jpeg",
+    "specification": {
+      "guarantee": 24,
+      "release": 2008,
+      "color": "желтый",
+      "screenDiagonal": 16
+    }
+  },
+  {
+    "id": 19,
+    "name": "Nout",
+    "description": "ugly",
+    "price": 16000,
+    "img": "/API_data/imgs/nout3.jpeg",
+    "specification": {
+      "guarantee": 16,
+      "release": 2005,
+      "color": "черный",
+      "screenDiagonal": 24
+    }
+  },
+  {
+    "id": 31,
+    "name": "Noutbook",
+    "description": "nice",
+    "price": 20000,
+    "img": "/API_data/imgs/nout1.jpeg",
+    "specification": {
+      "guarantee": 12,
+      "release": 2005,
+      "color": "красный",
+      "screenDiagonal": 27
+    }
+  },
+  {
+    "id": 21,
+    "name": "Book",
+    "description": "fine",
+    "price": 33000,
+    "img": "/API_data/imgs/nout2.jpeg",
+    "specification": {
+      "guarantee": 24,
+      "release": 2075,
+      "color": "белый",
+      "screenDiagonal": 16
+    }
+  },
+  {
+    "id": 51,
+    "name": "Nout",
+    "description": "ugly",
+    "price": 16000,
+    "img": "/API_data/imgs/nout3.jpeg",
+    "specification": {
+      "guarantee": 16,
+      "release": 2905,
+      "color": "красный",
+      "screenDiagonal": 24
+    }
+  },
+  {
+    "id": 71,
+    "name": "Noutbook",
+    "description": "nice",
+    "price": 20000,
+    "img": "/API_data/imgs/nout1.jpeg",
+    "specification": {
+      "guarantee": 12,
+      "release": 2000,
+      "color": "красный",
+      "screenDiagonal": 27
+    }
+  },
+  {
+    "id": 22,
+    "name": "Book",
+    "description": "fine",
+    "price": 33000,
+    "img": "/API_data/imgs/nout2.jpeg",
+    "specification": {
+      "guarantee": 24,
+      "release": 2005,
+      "color": "желтый",
+      "screenDiagonal": 16
+    }
+  },
+  {
+    "id": 33,
+    "name": "Nout",
+    "description": "ugly",
+    "price": 16000,
+    "img": "/API_data/imgs/nout3.jpeg",
+    "specification": {
+      "guarantee": 16,
+      "release": 2005,
+      "color": "белый",
+      "screenDiagonal": 24
     }
   }
 ]

@@ -1,4 +1,4 @@
-import Vuex, {MutationTree, ActionTree, GetterTree} from 'vuex'
+import {MutationTree, ActionTree, GetterTree} from 'vuex'
 import {RootState, Product} from '~/types';
 
 export const state = () => ({
@@ -7,23 +7,43 @@ export const state = () => ({
 }) as RootState
 
 export const getters = {
-  GET_PRODUCTS: (state: RootState): Product[] => state.products
+  GET_PRODUCTS: (state: RootState): Product[] => state.products,
+  GET_PRODUCT: (state: RootState) => (id: number) => {
+    let productIndex = state.products.findIndex(item => item.id === id)
+    return state.products[productIndex]
+  },
+  GET_BASKET_PRODUCTS: (state: RootState) => {
+    let basketProduct = [] as Product[]
+    for (let id of state.clientBasket) {
+      let item = state.products.find(item => item.id === id)
+      if (item != null)
+        basketProduct.push(item)
+    }
+    return basketProduct
+  },
 } as GetterTree<RootState, {}>
 
 export const mutations = {
   SET_PRODUCTS(state: RootState, products: Product[]) {
     state.products = products
   },
+  PUT_PRODUCT_TO_BASKET(state: RootState, id: number) {
+    if (id > 0)
+      state.clientBasket.push(id)
+    if (id < 0) {  //удаляем 1 экземпляр из корзины
+      let deletedProductIndex
+    }
+  }
 } as MutationTree<RootState>
 
 export const actions = {
-  async nuxtServerInit({getters, dispatch, commit}: any, {$axios}: any) {
+  async nuxtServerInit({commit}: any, {$axios}: any) {
     await $axios.$get('/API_data/data.json')
       .then(
         (response: Product[]) => commit('SET_PRODUCTS', response),
         (error: any) => console.log()
       )
-  },
+  }
 } as ActionTree<RootState, {}>
 
 
