@@ -1,0 +1,19 @@
+$color-red: red;
+
+
+$generalFontSize_px: 16px;
+$generalFontSize_number: 16;
+
+@function rem($n) {
+  @return #{($n / $generalFontSize_number)}rem;
+}
+
+
+
+
+
+
+
+
+
+
