@@ -14,6 +14,9 @@ import {mapMutations} from 'vuex'
 import {Product} from '~/types';
 
 export default Vue.extend({
+  data: () => ({
+    dd: 'null'
+  }),
   props: {
     product: {
       type: Object as PropType<Product>,
@@ -31,6 +34,7 @@ export default Vue.extend({
       'PUT_PRODUCT_TO_BASKET'
     ]),
     onPutProductToBasket(id: number) {
+      this.dd = '5'
       this.PUT_PRODUCT_TO_BASKET(id)
       this.$router.push('/Basket')
     }
