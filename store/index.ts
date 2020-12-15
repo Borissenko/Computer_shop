@@ -21,6 +21,7 @@ export const getters = {
     }
     return basketProduct
   },
+  GET_PRODUCT_AMOUNT: (state: RootState) => (id:number) => state.clientBasket.filter(itemId => itemId === id).length
 } as GetterTree<RootState, {}>
 
 export const mutations = {

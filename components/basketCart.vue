@@ -3,16 +3,20 @@
     <div class="basket__img" :style="{backgroundImage: `url(${product.img})`}"></div>
     <div class="basket__id">{{product.id}}</div>
     <div class="basket__description">{{product.name}} {{product.description}} {{product.specification.color}}</div>
-    <div class="basket__counter">7</div>
+    <counter :id="product.id"/>
     <div class="basket__price">{{product.price | splitPrice}} <span>₽</span></div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue, {PropType} from 'vue'
-import {Product} from '~/types';
+import {Product} from '~/types'
+import counter from '~/components/counter.vue'
 
 export default Vue.extend({
+  components: {
+    counter
+  },
   props: {
     product: {
       type: Object as PropType<Product>,
