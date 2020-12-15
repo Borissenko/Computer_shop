@@ -1,17 +1,19 @@
 <template>
   <div>
     <h3>Корзина: <span>{{GET_BASKET_PRODUCTS.length | productCounterNameder}}</span></h3>
-    <div class="basket">
-      <div v-for="(product, ind) of noRedundantProduct" :key="ind" class="basket__list">
-        <basket-cart :product="product"/>
+    <div v-if="GET_BASKET_PRODUCTS.length > 0" class="basket">
+      <div class="basket__list">
+        <basket-cart v-for="(product, ind) of noRedundantProduct"
+                     :key="ind"
+                     :product="product"
+        />
       </div>
       <div class="basket__underline">
         <div class="basket__outcome">
-          Итого: {{GET_BASKET_PRODUCTS.length | productCounterNameder}} на {{price | splitPrice}}
+          Итого: {{GET_BASKET_PRODUCTS.length | productCounterNameder}} на {{price | splitPrice}} ₽
         </div>
-        <div class="basket__btn_orange">Купить</div>
+        <div @click="onByProduct" class="basket__btn_orange">Купить</div>
       </div>
-
     </div>
 
     <div @click="$router.push('/')" class="control">Продолжить выбор</div>
@@ -22,7 +24,7 @@
 import Vue from "vue";
 import basketCart from "~/components/basketCart.vue";
 import {Product} from '~/types'
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 
 export default Vue.extend({
   components: {
@@ -43,7 +45,15 @@ export default Vue.extend({
       return sum
     }
   },
-  methods: {},
+  methods: {
+    ...mapMutations([
+      'CLEAR_BASKET'
+    ]),
+    onByProduct(this: any) {
+      this.CLEAR_BASKET()
+      this.$router.push('/')
+    }
+  },
   filters: {
     productCounterNameder(val: number): string {
       if (val === 0)
@@ -55,8 +65,8 @@ export default Vue.extend({
       return `${val} товаров`
     },
     splitPrice: function (val: number): string {
-      let [a, b, c,...rest] = val.toString().split('').reverse()
-      return [rest.reverse().join(''), ' ', c, b, a].join('')
+        let [a, b, c, ...rest] = val.toString().split('').reverse()
+        return [rest.reverse().join(''), ' ', c, b, a].join('')
     }
   }
 })
@@ -69,17 +79,21 @@ h3 span {
 }
 
 .basket {
-  margin-top: rem(20);
   display: flex;
   justify-content: space-between;
 
 
-  &__list {
+  .basket__list {
     display: block;
     width: calc(100% - 320px);
+
+    & * {
+      margin-top: rem(20);
+    }
   }
 
   &__underline {
+    margin-top: rem(20);
     width: 300px;
 
     .basket__outcome {
@@ -92,7 +106,6 @@ h3 span {
 
       background: $white;
       font-weight: 700;
-
     }
 
     .basket__btn_orange {
@@ -105,8 +118,6 @@ h3 span {
       color: $white;
     }
   }
-
-
 }
 
 .control {

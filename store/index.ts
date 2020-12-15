@@ -36,7 +36,11 @@ export const mutations = {
       let deletedProductIndex = state.clientBasket.findIndex(itemId => itemId === Math.abs(id))
       Vue.delete(state.clientBasket, deletedProductIndex)
     }
-  }
+  },
+  CLEAR_BASKET(state: RootState) {
+    console.log('CLEAR_BASKET ===')
+    state.clientBasket = []
+  },
 } as MutationTree<RootState>
 
 export const actions = {
