@@ -9,7 +9,6 @@
 <script lang="ts">
 import Vue, {PropType} from "vue";
 import {mapMutations, mapGetters} from "vuex";
-import {Product} from "~/types";
 
 export default Vue.extend({
   props: {
@@ -45,8 +44,6 @@ export default Vue.extend({
     display: flex;
     align-items: center;
     justify-content: center;
-
   }
-
 }
 </style>

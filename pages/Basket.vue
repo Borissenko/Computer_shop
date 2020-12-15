@@ -34,10 +34,10 @@ export default Vue.extend({
     ...mapGetters([
       'GET_BASKET_PRODUCTS'
     ]),
-    noRedundantProduct() {
+    noRedundantProduct()  {
       return [...new Set(this.GET_BASKET_PRODUCTS)]
     },
-    price() {
+    price(): number {
       let sum = null
       for(let item of this.GET_BASKET_PRODUCTS) {
         sum = sum + item.price
@@ -49,7 +49,7 @@ export default Vue.extend({
     ...mapMutations([
       'CLEAR_BASKET'
     ]),
-    onByProduct(this: any) {
+    onByProduct(this: any): void {
       this.CLEAR_BASKET()
       this.$router.push('/')
     }

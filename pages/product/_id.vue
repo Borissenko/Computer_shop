@@ -61,7 +61,7 @@ export default Vue.extend({
     ...mapMutations([
       'PUT_PRODUCT_TO_BASKET'
     ]),
-    onPutProductToBasket(id: number) {
+    onPutProductToBasket(id: number): void {
       this.PUT_PRODUCT_TO_BASKET(id)
       this.$router.push('/Basket')
     }
