@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import {MutationTree, ActionTree, GetterTree} from 'vuex'
 import {RootState, Product} from '~/types';
 
@@ -32,7 +33,8 @@ export const mutations = {
     if (id > 0)
       state.clientBasket.push(id)
     if (id < 0) {  //удаляем 1 экземпляр из корзины
-      let deletedProductIndex
+      let deletedProductIndex = state.clientBasket.findIndex(itemId => itemId === Math.abs(id))
+      Vue.delete(state.clientBasket, deletedProductIndex)
     }
   }
 } as MutationTree<RootState>

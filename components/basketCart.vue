@@ -1,10 +1,10 @@
 <template>
-  <div class="basket">
-    <div class="basket__img" :style="{backgroundImage: `url(${product.img})`}"></div>
-    <div class="basket__id">{{product.id}}</div>
-    <div class="basket__description">{{product.name}} {{product.description}} {{product.specification.color}}</div>
-    <counter :id="product.id"/>
-    <div class="basket__price">{{product.price | splitPrice}} <span>₽</span></div>
+  <div class="cart">
+    <div class="cart__img" :style="{backgroundImage: `url(${product.img})`}"></div>
+    <div class="cart__id">{{product.id}}</div>
+    <div class="cart__description">{{product.name}} {{product.description}} {{product.specification.color}}</div>
+    <counter :id="product.id" class="cart__counter"/>
+    <div class="cart__price">{{product.price | splitPrice}} <span>₽</span></div>
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.basket {
+.cart {
   display: grid;
   grid-template-columns: rem(160) 1fr rem(100) rem(100);
   grid-column-gap: rem(20);
@@ -67,6 +67,10 @@ export default Vue.extend({
     font-size: rem(20);
     font-weight: 600;
     line-height: rem(25);
+  }
+  &__counter{
+    grid-area: 3/3/3/3;
+    align-self: center;
   }
   &__price {
     grid-area: 3/4/3/4;

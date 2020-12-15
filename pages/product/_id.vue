@@ -6,7 +6,7 @@
     <div class="anons">
       <div class="anons__img" :style="{backgroundImage: `url(${product.img})`}"></div>
       <div class="anons__price">{{product.price | splitPrice}} <span>₽</span></div>
-      <div @click="$router.push('/Basket')" class="anons__btn">Купить</div>
+      <div @click="onPutProductToBasket(product.id)" class="anons__btn">Купить</div>
     </div>
 
     <div class="specification">
@@ -39,7 +39,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 import {Product} from '~/types'
 
 export default Vue.extend({
@@ -55,6 +55,15 @@ export default Vue.extend({
     splitPrice: function (val: number): string {
       let [a, b, c,...rest] = val.toString().split('').reverse()
       return [rest.reverse().join(''), ' ', c, b, a].join('')
+    }
+  },
+  methods: {
+    ...mapMutations([
+      'PUT_PRODUCT_TO_BASKET'
+    ]),
+    onPutProductToBasket(id: number) {
+      this.PUT_PRODUCT_TO_BASKET(id)
+      this.$router.push('/Basket')
     }
   },
   created() {
