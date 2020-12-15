@@ -9,11 +9,11 @@ export const state = () => ({
 
 export const getters = {
   GET_PRODUCTS: (state: RootState): Product[] => state.products,
-  GET_PRODUCT: (state: RootState) => (id: number) => {
+  GET_PRODUCT: (state: RootState) => (id: number): Product => {
     let productIndex = state.products.findIndex(item => item.id === id)
     return state.products[productIndex]
   },
-  GET_BASKET_PRODUCTS: (state: RootState) => {
+  GET_BASKET_PRODUCTS: (state: RootState): Product[] => {
     let basketProduct = [] as Product[]
     for (let id of state.clientBasket) {
       let item = state.products.find(item => item.id === id)

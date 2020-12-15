@@ -82,6 +82,11 @@ h3 span {
   display: flex;
   justify-content: space-between;
 
+  @media (max-width: 1000px) {
+    flex-flow: wrap column;
+
+  }
+
 
   .basket__list {
     display: block;
@@ -89,6 +94,10 @@ h3 span {
 
     & * {
       margin-top: rem(20);
+    }
+
+    @media (max-width: 1000px) {
+      width: 100%;
     }
   }
 

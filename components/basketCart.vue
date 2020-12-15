@@ -52,7 +52,6 @@ export default Vue.extend({
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    border: #777777 1px solid;
   }
 
   &__id {
@@ -67,15 +66,28 @@ export default Vue.extend({
     font-size: rem(20);
     font-weight: 600;
     line-height: rem(25);
+
+    @media (max-width: 700px) {
+      grid-area: 3/2/4/4;
+    }
   }
   &__counter{
+    max-width: rem(90);
     grid-area: 3/3/3/3;
     align-self: center;
+
+    @media (max-width: 700px) {
+      grid-area: 5/2/5/4;
+    }
   }
   &__price {
     grid-area: 3/4/3/4;
     @extend .price;
     line-height: rem(25);
+
+    @media (max-width: 700px) {
+      grid-area: 6/2/6/4;
+    }
   }
 
 }
